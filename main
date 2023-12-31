@@ -1,0 +1,108 @@
+def main():
+  # Struktur data untuk menyimpan informasi karyawan
+  data_karyawan = [
+      {
+          'id': 1,
+          'nama': 'Fajar Rahmat',
+          'posisi': 'Programmer',
+          'gaji': 50000,
+      },
+      {
+          'id': 2,
+          'nama': 'Jane Doe',
+          'posisi': 'Desainer',
+          'gaji': 45000,
+      },
+      # Tambahkan karyawan lain di sini
+  ]
+  
+  while True:
+      print("===== ABSENSI KARYAWAN =====\n")
+      print("1. Lihat Data Karyawan")
+      print("2. Tambah Data Karyawan")
+      print("3. Ubah Data Karyawan")
+      print("4. Hapus Data Karyawan")
+      print("5. Keluar")
+      print("============================\n")
+
+      pilihan = int(input("Pilih Menu: "))
+
+      if pilihan == 1:
+          lihat_data_karyawan(data_karyawan)
+      elif pilihan == 2:
+          tambah_data_karyawan(data_karyawan)
+      elif pilihan == 3:
+          ubah_data_karyawan(data_karyawan)
+      elif pilihan == 4:
+          hapus_data_karyawan(data_karyawan)
+      elif pilihan == 5:
+          print("Keluar")
+          break  # Keluar dari perulangan utama dan akhiri program
+      else:
+          print("Pilihan tidak valid. Silakan pilih angka 1-5.")
+
+def lihat_data_karyawan(data_karyawan):
+  print("===== DATA KARYAWAN =====")
+  for karyawan in data_karyawan:
+      print(f"ID: {karyawan['id']}")
+      print(f"Nama: {karyawan['nama']}")
+      print(f"Posisi: {karyawan['posisi']}")
+      print(f"Gaji: {karyawan['gaji']}")
+      print("==========================")
+
+def tambah_data_karyawan(data_karyawan):
+  print("Tambah Data Karyawan")
+  id_baru = int(input("Masukkan ID karyawan baru: "))
+  nama_baru = input("Masukkan nama karyawan baru: ")
+  posisi_baru = input("Masukkan posisi karyawan baru: ")
+  gaji_baru = int(input("Masukkan gaji karyawan baru: "))
+
+
+  # Menambahkan karyawan baru ke dalam struktur data
+  data_karyawan.append({
+      'id': id_baru,
+      'nama': nama_baru,
+      'posisi': posisi_baru,
+      'gaji': gaji_baru,
+  })
+
+def ubah_data_karyawan(data_karyawan):
+  print("Ubah data Karyawan")
+  id_ubah = int(input("Masukkan ID Karyawan yang ingin diubah: "))
+
+  # Mencari indeks karyawan dengan ID yang sesuai
+  index_karyawan = -1
+  for i, karyawan in enumerate(data_karyawan):
+      if karyawan['id'] == id_ubah:
+          index_karyawan = i
+          break
+
+  if index_karyawan != -1:
+    # Implementasikan logika untuk mengubah data karyawan
+    # Misalnya, Anda dapat meminta pengguna memasukkan data baru
+    data_karyawan[index_karyawan]['nama'] = input("Masukkan nama baru: ")
+    data_karyawan[index_karyawan]['posisi'] = input("Masukkan posisi baru: ")
+    data_karyawan[index_karyawan]['gaji'] = int(input("Masukkan gaji baru: "))
+  else:
+    print(f"Tidak ada karyawan dengan ID {id_ubah} ditemukan.")
+
+def hapus_data_karyawan(data_karyawan):
+    print("Hapus Data Karyawan")
+    id_hapus = int(input("Masukkan ID karyawan yang ingin dihapus: "))
+
+    # Mencari indeks karyawan dengan ID yang sesuai
+    index_karyawan = -1
+    for i, karyawan in enumerate(data_karyawan):
+        if karyawan['id'] == id_hapus:
+            index_karyawan = i
+            break
+
+    if index_karyawan != -1:
+        # hapus data karyawan
+        del data_karyawan[index_karyawan]
+        print(f"Karyawan dengan ID {id_hapus} berhasil dihapus.")
+    else:
+        print(f"Tidak ada karyawan dengan ID {id_hapus} ditemukan.")
+
+if __name__ == "__main__":
+    main()
